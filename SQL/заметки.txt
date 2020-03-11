@@ -1,0 +1,20 @@
+Команды:
+
+!!! Инструкции в mySQL разделяются точкой с запятой  ;
+
+
+SELECT * from base.table // Выбрать все, где, base- имя базы данных, table - имя таблицы
+
+SELECT field_1, field_2 from base.table  // выбирате только поля field_1, field_2
+
+SELECT field_1, field_2 from base.table WHERE field_1 = 'value' // Выборка по условию.
+SELECT field_1, field_2 from base.table WHERE field_2 > 50 // Выборка по условию.
+
+SELECT DISTINCT(field_1) FROM table; // выбирает записи с уникальным значением поля field_1;	
+
+select from table where field_1 = val and(field_2 >50 or field_2 = 33);
+select from table where not field_1 = val; // условие с отрицанием, выберит записи в которых значение field_1 не равно val
+
+select * from table order by field_1 asc // выбрать все записи и отсортировать по полю field_1 по возрастанию (asc)
+select * from table order by field_1 desc // выбрать все записи и отсортировать по полю field_1 по убыванию (desc)
+select * from table order by field_1 asc, field_2 desc // вторая сортировка сработает если в поле field_1 будут одинаковые значения. 
