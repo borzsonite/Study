@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset=utf-8>
+    <title></title>
+
+<body onload="getHigthFromTop()">
+    <textarea id='text'></textarea>
+    <p id='res'></p>
+    <p id='symb'></p>
+    <p id='noSpaces'></p>
+    <p id='percentage'></p>
+</body>
+
+
+<script>
+    'use strict'
+
+    function getHigthFromTop() {
+        let text = document.getElementById('text');
+        let p = document.getElementById('res');
+        let pSymb = document.getElementById('symb');
+        let noSp = document.getElementById('noSpaces');
+        let percentage = document.getElementById('percentage');
+
+        text.addEventListener('blur', function () {
+            p.innerHTML = '';
+            let textArr = text.value.split(' ');
+            let textArrSymb = text.value.split('');
+            console.log(textArrSymb);
+            let objQuantity = getObj(textArrSymb);
+            p.innerHTML = textArr.length + ' слов в тексте';
+            pSymb.innerHTML = textArrSymb.length + ' символов в тексте';
+            noSp.innerHTML = getArrWithoutSpaces(textArrSymb).length + ' символов без пробелов';
+            postDate(percentage, objQuantity, textArrSymb.length);
+
+
+        });
+    }
+
+    function getArrWithoutSpaces(arr) {
+        let newArr = [];
+        for (let elem of arr) {
+            if (elem.charCodeAt(0) != 32) {
+                newArr.push(elem);
+            }
+        }
+        return newArr;
+    }
+
+
+    function getObj(arr) {
+        let obj = {};
+        for (let i = 0; i < arr.length; i++) {
+            if (obj[arr[i]] == undefined) {
+                obj[arr[i]] = 1;
+            } else {
+                obj[arr[i]]++;
+            }
+        }
+        console.log(obj);
+        return obj;
+    }
+
+
+    function postDate(elem, obj, quantity) {
+        for (let key in obj) {
+            let perc = (100 * obj[key] / quantity).toFixed(2);
+            elem.innerHTML += key + ' - ' + perc + '%' + '<br>';
+        }
+    }
+
+
+</script>
+</head>
+
+</html>
