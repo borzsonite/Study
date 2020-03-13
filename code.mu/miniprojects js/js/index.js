@@ -82,7 +82,7 @@ let translit = {
     г: 'g',
     д: 'd',
     е: 'e',
-    ё: 'yo', //
+    ё: 'yo', //yo, zh, ch, sh, je, yu, ya
     ж: 'zh', //
     з: 'z',
     и: 'i',
@@ -163,12 +163,28 @@ function translitTranslate() {
     textAreaTask2_1.value = outStr;
 }
 
-textAreaTask2_1.addEventListener('blur', translateTranslit);
+textAreaTask2_1 = document.getElementById('task-2-2')
+textAreaTask2_1.onblur = translateTranslit;
 
 function translateTranslit() {
-    console.log('work');
+    let outStr = '';
+    let inStr = textAreaTask2_1.value;
+    console.log(inStr)
+    begin: for (let i = 0; i < inStr.length; i++) {
+        for (let key in translit) {
+            if (inStr[i] == translit[key]) {
+                outStr += key;
+                continue begin;
+            }
+            else if (inStr[i] == ' ') {
+                outStr += ' ';
+                continue begin;
+            }
+        }
+    }
+    textAreaTask2.value = outStr;
 
-    ch a sh k a
+    // ch a sh k a
 }
 
 
