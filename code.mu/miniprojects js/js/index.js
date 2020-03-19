@@ -76,14 +76,20 @@ function SimbolsPercentCount() {
 let textAreaTask2 = document.getElementById('task-2-1');
 let textAreaTask2_1 = document.getElementById('task-2-2');
 let translit = {
+    ё: 'yo', //yo, zh, ch, sh, je, yu, ya
+    ж: 'zh', //
+    ч: 'ch',//
+    ш: 'sh',//
+    щ: 'sh',//
+    э: 'je',//
+    ю: 'yu',//
+    я: 'ya',//
     а: 'a',
     б: 'b',
     в: 'v',
     г: 'g',
     д: 'd',
     е: 'e',
-    ё: 'yo', //yo, zh, ch, sh, je, yu, ya
-    ж: 'zh', //
     з: 'z',
     и: 'i',
     й: 'i',
@@ -100,15 +106,9 @@ let translit = {
     ф: 'f',
     х: 'h',
     ц: 'c',
-    ч: 'ch',//
-    ш: 'sh',//
-    щ: 'sh',//
     ы: 'i',
     ъ: '`',
     ь: '`',
-    э: 'je',//
-    ю: 'yu',//
-    я: 'ya',//
     А: 'A',
     Б: 'B',
     В: 'V',
@@ -143,6 +143,7 @@ let translit = {
     Э: 'JE',
     Ю: 'YU',
     Я: 'YA',
+    " ": " "
 }
 textAreaTask2.onblur = translitTranslate;
 function translitTranslate() {
@@ -163,17 +164,16 @@ function translitTranslate() {
     textAreaTask2_1.value = outStr;
 }
 
-textAreaTask2_1 = document.getElementById('task-2-2')
-textAreaTask2_1.onblur = translateTranslit;
+textAreaTask2_2 = document.getElementById('task-2-2')
+textAreaTask2_2.onblur = translateTranslit;
 
 function translateTranslit() {
     let outStr = '';
-    let inStr = textAreaTask2_1.value;
-    console.log(inStr)
+    let inStr = textAreaTask2_2.value;
     begin: for (let i = 0; i < inStr.length; i++) {
         for (let key in translit) {
             if (inStr[i] == translit[key]) {
-                outStr += key;
+                outStr += key
                 continue begin;
             }
             else if (inStr[i] == ' ') {
@@ -183,8 +183,26 @@ function translateTranslit() {
         }
     }
     textAreaTask2.value = outStr;
+}
+
+
+
+// console.log(inStr)
+// begin: for (let i = 0; i < inStr.length; i++) {
+//     for (let key in translit) {
+//         if (translit[key] == inStr[i] ) {
+//             outStr += key;
+//             continue begin;
+//         }
+//         else if (inStr[i] == ' ') {
+//             outStr += ' ';
+//             continue begin;
+//         }
+//     }
+// }
+// textAreaTask2.value = outStr;
 
     // ch a sh k a
-}
+// }
 
 

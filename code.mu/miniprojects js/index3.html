@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" class="in-1" name="" id="">
+    <div class="out"></div>
+    <button class="bt-1">PUSH</button>
+</body>
+<script>
+
+    let userInput = document.querySelector('.in-1');
+    document.querySelector('.bt-1').onclick = () => {
+        str = userInput.value.toLowerCase();
+        document.querySelector('.out').innerHTML = str.split('').reverse().join('') === str
+    }
+
+</script>
+
+</html>
